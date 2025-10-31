@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Học web chuẩn</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .portfolio {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            margin: 40px 0 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: green;
+        }
+
+        .list-tab {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px;
+            text-align: center;
+        }
+
+        .list-tab li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .list-tab li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            padding: 5px 0;
+            display: inline-block;
+            position: relative;
+        }
+
+        .list-tab li:first-child a {
+            color: #0066cc; /* Blue for "All" */
+        }
+
+        .list-tab li:first-child a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: green;
+        }
+
+        .galerry {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .galerry li {
+            width: calc(33.333% - 14px);
+            box-sizing: border-box;
+        }
+
+        .galerry li a {
+            display: flex;
+            width: 100%;
+            height: 260px;
+            background-color: #90EE90; /* Light green */
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .galerry li img {
+            display: none; /* Ẩn hình ảnh */
+        }
+
+        .galerry li a::after {
+            content: 'Học Web Chuẩn';
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <section class="portfolio">
+        <h2>MY PORTFOLIO</h2>
+        <ul class="list-tab">
+            <li><a href="./">All</a></li>
+            <li><a href="./">Web App</a></li>
+            <li><a href="./">UI/UX</a></li>
+            <li><a href="./">Graphics Design</a></li>
+            <li><a href="./">Mobile App</a></li>
+            <li><a href="./">Branding</a></li>
+            <li><a href="./">Marketing</a></li>
+        </ul>
+        <ul class="galerry">
+            <li><a href="./"><img src="https://hocwebchuan.com/exercises/images/img_350x260.png" alt=""></a></li>
+            <li><a href="./"><img src="https://hocwebchuan.com/exercises/images/img_350x260.png" alt=""></a></li>
+            <li><a href="./"><img src="https://hocwebchuan.com/exercises/images/img_350x260.png" alt=""></a></li>
+        </ul>
+    </section>
+</body>
+</html>
+

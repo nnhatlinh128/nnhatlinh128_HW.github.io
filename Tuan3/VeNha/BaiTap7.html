@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BaiTap7</title>
+<style>
+  /* Căn giữa trang và thêm phông chữ */
+  body {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Vùng bao wrapper */
+  #wrapper {
+    border: 2px solid black;
+    width: 400px;
+  }
+
+  /* Header */
+  header {
+    border: 2px solid black;
+    height: 30px;
+    margin: 5px;            /* khoảng cách giữa các ô */
+
+  }
+
+  /* Vùng giữa: nav và main đặt cạnh nhau */
+  .middle {
+    display: flex;
+  }
+
+  nav {
+    border: 2px solid black;
+    width: 50px;
+    height: 200px;
+    margin: 5px;            /* khoảng cách giữa các ô */
+
+  }
+
+  main {
+    border: 2px solid black;
+    flex: 1; /* chiếm phần còn lại */
+    height: 200px;
+    margin: 5px;            /* khoảng cách giữa các ô */
+
+  }
+
+  /* Footer */
+  footer {
+    border: 2px solid black;
+    height: 20px;
+    margin: 5px;            /* khoảng cách giữa các ô */
+    padding: 5px 15px;      /* khoảng cách trong ô */
+
+  }
+</style>
+</head>
+<body>
+
+<div id="wrapper">
+  <header>header</header>
+
+  <div class="middle">
+    <nav>nav</nav>
+    <main>main</main>
+  </div>
+
+  <footer>footer</footer>
+</div>
+
+</body>
+</html>
