@@ -3,123 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>The Bat Family</title>
-    <link rel="stylesheet" href="styles/main.css">
-     <style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fff;
+</head>
+<style>
+    /* Reset và base styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/*i. Khung chứa lớn */
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* i. Khung chứa lớn */
 #root {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+    width: 1024px;
+    margin: 0 auto; /* Căn lề giữa */
 }
 
-/*ii. site-header */
+/* ii. site-header */
 #site-header {
-    background-color: #b0b0b0;
-    padding: 15px 0;
-    color: white;
-    font-size: 28px;
+    text-align: center; /* Căn lề giữa */
+    margin: 20px 0;
+    background: linear-gradient(to bottom, #f0f0f0, #e0e0e0); /* Background màu */
+    background-image: url('imgs/logo.png'); /* Hình logo */
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: 40px;
+    color: black;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 15px 20px 15px 60px;
+    display: inline-block;
+    width: 100%;
+}
+
+#site-header span {
+    font-size: 24px;
     font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-#site-header img {
-    width: 60px;
-    height: auto;
-}
-
-/*iii. li */
+/* Danh sách superheroes */
 .superheroes {
     list-style: none;
     padding: 0;
-    margin-top: 15px;
+    margin: 20px 0;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
+    justify-content: space-around;
+    align-items: flex-start;
 }
 
+/* iii. li trong superheroes */
 .superheroes li {
-    width: 18%;
-    border-radius: 10px;
-    overflow: hidden;
+    width: 180px; /* Chiều rộng mặc định */
+    display: inline-block;
     position: relative;
-    transition: all 0.3s ease;
+    transition: width 0.3s ease; /* Hiệu ứng chuyển đổi */
+    margin: 0 5px;
 }
 
-/*iv. Hình trong superheroes */
-.superheroes img {
+/* iv. Hình trong superheroes */
+.superheroes li img {
+    border: 2px solid #333;
     max-width: 100%;
-    height: auto;
     display: block;
-    border-radius: 10px;
-    border: 2px solid #ccc;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-/* Tên hero nằm đè lên ảnh */
-.hero-header {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 8px 0;
-    font-size: 18px;
-    border-radius: 10px 10px 0 0;
-    opacity: 0.5;
+    height: auto;
 }
 
-/*v. Thẻ a trong superheroes */
-.superheroes a {
+/* Tên hero ở góc trên trái */
+.superheroes li .hero-header {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: block;
-    background-color: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    text-decoration: underline;
+    top: 5px;
+    left: 5px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 3px 8px;
+    font-size: 12px;
+    z-index: 2;
+}
+
+/* v. Thẻ a trong superheroes */
+.superheroes li a {
+    display: none; /* Ẩn mặc định */
+    width: 100%;
+    color: white;
+    text-decoration: none;
+    background-color: #555;
     padding: 8px 0;
-    border-radius: 0 0 10px 10px;
-    opacity: 0;
-    transition: all 0.3s ease;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 14px;
 }
 
-/*vi. Hover */
+/* vi. Hover effects */
 .superheroes li:hover {
-    transform: scale(1.05);
-}
-
-.superheroes li:hover img {
-    filter: brightness(1.1);
+    width: 200px; /* Tăng chiều rộng khi hover */
 }
 
 .superheroes li:hover a {
-    opacity: 1;
+    display: block; /* Hiển thị Read more */
+    text-decoration: underline; /* Hiển thị underline */
 }
 
-.superheroes li:hover .hero-header {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.8);
-}
 
-    </style>%
-</head>
+</style>
 <body>
     <div id="root">
         <h1 id="site-header"><span>The Bat family</span></h1>
