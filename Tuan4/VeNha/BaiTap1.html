@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài Tập 1</title>
+  <!-- Gọi thư viện Animate.css -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    /* ==== Định dạng ban đầu cho chữ Khoa CNTTKD ==== */
+    .khoa {
+      background-color: blue;        /* màu nền ban đầu: xanh */
+      font-size: 20px;               /* cỡ chữ ban đầu: 20px */
+      color: white;                  /* màu chữ: trắng cho dễ nhìn */
+      display: inline-block;         /* giúp transform hoạt động chính xác */
+      transition: all 0.5s ease;     /* tạo hiệu ứng chuyển mượt trong 0.5 giây */
+      padding: 10px 20px;            /* thêm khoảng đệm cho đẹp */
+      border-radius: 8px;            /* bo góc nhẹ */
+    }
+
+    /* ====Khi hover chuột vào===== */
+    .khoa:hover {
+      background-color: red;         /* a. đổi màu nền từ xanh sang đỏ */
+      font-size: 50px;               /* b. đổi cỡ chữ từ 20px sang 50px */
+      transform: matrix(1.4, -0.54, 0.54, 1.4, 0, 0); /* c. áp dụng ma trận transform */
+    }
+    
+  </style>
+</head>
+<body>
+  <!-- Thẻ chứa chữ cần hiệu ứng -->
+  <h1 class="khoa">Khoa CNTTKD</h1>
+    <script>
+    const title = document.getElementById('title');
+
+    // Thêm hiệu ứng đặc biệt khi hover
+    title.addEventListener('mouseenter', () => {
+      // Xóa hiệu ứng cũ (nếu có)
+      title.classList.remove('animate__animated','animate__rotateInDownLeft','animate__flipInY','animate__rollIn');
+      // Chọn ngẫu nhiên 1 trong các hiệu ứng mạnh
+      const effects = ['animate__rotateInDownLeft','animate__flipInY','animate__rollIn','animate__zoomInDown','animate__backInUp'];
+      const randomEffect = effects[Math.floor(Math.random() * effects.length)];
+      title.classList.add('animate__animated', randomEffect);
+    });
+
+    // Xóa hiệu ứng sau khi rời chuột để lần sau có thể chạy lại
+    title.addEventListener('mouseleave', () => {
+      title.classList.remove('animate__animated','animate__rotateInDownLeft','animate__flipInY','animate__rollIn','animate__zoomInDown','animate__backInUp');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài Tập 2</title>
+
+<style>
+  /* ====== KHUNG CƠ BẢN (theo cấu trúc Viblo) ====== */
+.view {
+    width: 300px;                     /* chiều rộng khung */
+    height: 200px;                    /* chiều cao khung */
+    margin: 10px;                     /* khoảng cách giữa các khung */
+    float: left;                      /* canh các khung nằm ngang */
+    border: 10px solid #fff;          /* viền trắng 10px */
+    overflow: hidden;                 /* ẩn phần vượt ra ngoài khung */
+    position: relative;               /* dùng cho định vị các phần con */
+    text-align: center;               /* căn giữa nội dung chữ */
+    box-shadow: 1px 1px 2px #e6e6e6;  /* đổ bóng nhẹ */
+    cursor: default;                  /* con trỏ mặc định (không phải link) */
+    background: #fff url(../images/bgimg.jpg) no-repeat center center;
+    /* nền trắng + ảnh bgimg.jpg căn giữa, không lặp */
+}
+
+.view .mask, .view .content {
+    width: 300px;                     /* chiều rộng bằng khung */
+    height: 200px;                    /* chiều cao bằng khung */
+    position: absolute;               /* phủ lên khung cha */
+    overflow: hidden;                 /* ẩn phần thừa */
+    top: 0; left: 0;                  /* nằm ở góc trên trái */
+}
+
+.view img {
+    display: block;                   /* hiển thị dạng khối */
+    position: relative;               /* cho phép hiệu ứng di chuyển */
+}
+
+.view h2 {
+    text-transform: uppercase;        /* đổi chữ thành in hoa */
+    color: #fff;                      /* chữ màu trắng */
+    text-align: center;               /* căn giữa chữ */
+    position: relative;               /* định vị tương đối trong mask */
+    font-size: 17px;                  /* cỡ chữ */
+    padding: 10px;                    /* đệm quanh chữ */
+    background: rgba(0, 0, 0, 0.8);   /* nền đen trong suốt 80% */
+    margin: 20px 0 0 0;               /* cách trên 20px */
+}
+
+.view p {
+    font-family: Georgia, serif;      /* font chữ cổ điển Georgia */
+    font-style: italic;               /* chữ nghiêng */
+    font-size: 12px;                  /* cỡ chữ nhỏ */
+    position: relative;               /* định vị tương đối */
+    color: #fff;                      /* chữ trắng */
+    padding: 10px 20px 20px;          /* khoảng đệm trong */
+    text-align: center;               /* căn giữa chữ */
+}
+
+.view a.info {
+    display: inline-block;            /* nút dạng khối nhỏ */
+    text-decoration: none;            /* bỏ gạch chân link */
+    padding: 7px 14px;                /* đệm nút */
+    background: #000;                 /* nền đen */
+    color: #fff;                      /* chữ trắng */
+    text-transform: uppercase;        /* in hoa chữ */
+    box-shadow: 0 0 1px #000;         /* viền đen nhẹ */
+}
+
+.view a.info:hover {
+    box-shadow: 0 0 5px #000;         /* khi hover, viền đen sáng hơn */
+}
+
+  /* ------------------------------------------------------------
+     A) VÍ DỤ 1
+     - i) Đổi màu nền mask thành xanh nhạt
+     - ii) Hover Style #1 chạy từ trái sang phải (slide-in từ trái)
+  ------------------------------------------------------------ */
+/* --- Ảnh chính --- */
+.view-first img {
+    transition: all 0.2s linear;             /* chuyển động mượt */
+}
+
+/* --- Lớp phủ mask --- */
+.view-first .mask {
+    opacity: 0;                              /* ban đầu ẩn */
+    background-color: rgba(173, 216, 230, 0.8); /* i) nền xanh nhạt (lightblue) */
+    transform: translateX(-320px);           /* ii) ẩn ở ngoài bên trái khung */
+    transition: all 0.4s ease-in-out;        /* chuyển động mượt */
+}
+
+/* --- Tiêu đề --- */
+.view-first h2 {
+    transform: translateX(-120px);           /* trượt từ trái */
+    opacity: 0;                              /* ban đầu ẩn */
+    transition: all 0.2s ease-in-out;        /* mượt */
+}
+
+/* --- Đoạn mô tả --- */
+.view-first p {
+    transform: translateX(-120px);           /* trượt từ trái */
+    opacity: 0;                              /* ban đầu ẩn */
+    transition: all 0.2s ease-in-out;        /* mượt */
+}
+
+/* --- Nút “info” --- */
+.view-first a.info {
+    transform: translateX(-120px);           /* trượt từ trái */
+    opacity: 0;                              /* ban đầu ẩn */
+    transition: all 0.2s ease-in-out;        /* mượt */
+}
+
+/* ================= HOVER ================= */
+
+/* Khi hover vào toàn khung */
+.view-first:hover img {
+    transform: scale(1.1);                  /* phóng ảnh nhẹ */
+}
+
+/* Lớp phủ hiện ra từ trái sang phải */
+.view-first:hover .mask {
+    opacity: 1;                              /* hiện mask */
+    transform: translateX(0);                /* trượt vào vị trí ban đầu */
+}
+
+/* Chữ & nút trượt đồng bộ theo chiều ngang */
+.view-first:hover h2,
+.view-first:hover p,
+.view-first:hover a.info {
+    opacity: 1;                              /* hiện ra */
+    transform: translateX(0);                /* di chuyển về vị trí gốc */
+}
+
+/* Thêm chút độ trễ để hiệu ứng có nhịp */
+.view-first:hover p {
+    transition-delay: 0.1s;                  /* mô tả vào sau tiêu đề */
+}
+.view-first:hover a.info {
+    transition-delay: 0.2s;                  /* nút vào cuối cùng */
+}
+
+  /* ------------------------------------------------------------
+     B) VÍ DỤ 7
+     - i) Khi đang hover, ảnh người mẫu vẫn HIỆN (không biến mất)
+     - ii) Hover Style #1 (tức phần nội dung) cũng xoay giống ảnh
+  ------------------------------------------------------------ */
+/* Ảnh người mẫu: luôn hiện, cho phép xoay mượt khi hover */
+.view-seventh img {
+  transition: all 0.5s ease-out;        /* chuyển động mượt */
+  opacity: 1;                           /* luôn hiển thị ảnh */
+  transform: rotate(0deg) scale(1);     /* trạng thái ban đầu */
+}
+
+/* Lớp phủ + nội dung: ẩn phía trên và xoay ngược, chuẩn bị rơi xuống */
+.view-seventh .mask {
+  background-color: rgba(77,44,35,0.5); /* nền mask bán trong suốt */
+  opacity: 0;                           /* ẩn trước khi hover */
+  transition: all 0.3s ease-out;        /* chuyển động mượt */
+  transform: translateY(-200px) rotate(180deg); /* nằm trên + xoay ngược */
+}
+
+/* Tiêu đề, mô tả, nút: ẩn phía trên, chuẩn bị trượt xuống */
+.view-seventh h2,
+.view-seventh p,
+.view-seventh a.info {                  /* lưu ý: a.info (không phải a .info) */
+  transform: translateY(-200px) rotate(0deg); /* trốn phía trên */
+  opacity: 0;                           /* ẩn chữ */
+  transition: all 0.2s ease-in-out;    /* chuyển động mượt */
+}
+
+/* ============ HOVER ============ */
+
+/* (i) Ảnh vẫn là người mẫu: xoay mạnh nhưng KHÔNG biến mất */
+.view-seventh:hover img {
+  transform: rotate(720deg) scale(1);   /* xoay 2 vòng, giữ kích thước */
+  opacity: 1;                           /* không tắt ảnh */
+}
+
+/* (ii) Mask rơi xuống + xoay về 0 để đồng bộ với ảnh */
+.view-seventh:hover .mask {
+  opacity: 1;                           /* hiện mask */
+  transform: translateY(0) rotate(0deg);/* rơi xuống + hết xoay ngược */
+  transition-delay: 0.4s;               /* vào sau ảnh 1 nhịp */
+}
+
+/* (ii) Nội dung xoay cùng style với ảnh (xoay 360deg khi trượt xuống) */
+.view-seventh:hover h2 {
+  opacity: 1;                           /* hiện chữ */
+  transform: translateY(0) rotate(360deg); /* trượt xuống + xoay */
+  transition-delay: 0.7s;              /* vào sau mask */
+}
+.view-seventh:hover p {
+  opacity: 1;
+  transform: translateY(0) rotate(360deg);
+  transition-delay: 0.5s;
+}
+.view-seventh:hover a.info {
+  opacity: 1;
+  transform: translateY(0) rotate(360deg);
+  transition-delay: 0.5s;              /* vào cuối cùng */
+}
+
+  /* ------------------------------------------------------------
+     C) HIỆU ỨNG TỰ THIẾT KẾ - "Glass Slide-Up + Blur"
+     Ý tưởng: ảnh mờ nhẹ -> hover thì ảnh rõ + zoom; mask kính mờ trượt từ dưới lên;
+              tiêu đề giãn chữ; nút trượt từ phải qua.
+  ------------------------------------------------------------ */
+  .view-glass img {
+    filter: blur(2px);                       /* ảnh hơi mờ ban đầu */
+    transform: scale(1);                     /* tỉ lệ gốc */
+    transition: all 0.5s ease;               /* chuyển mượt */
+  }
+  .view-glass .mask {
+    backdrop-filter: blur(6px);              /* kính mờ (trên trình duyệt hỗ trợ) */
+    background: rgba(255,255,255,0.15);      /* lớp kính mờ */
+    transform: translateY(220px);            /* nằm dưới khung (ẩn) */
+    opacity: 0;                              /* ẩn mask */
+    transition: all 0.45s ease;              /* chuyển mượt */
+  }
+  .view-glass h2 {
+    background: transparent;                 /* bỏ nền đen */
+    letter-spacing: 1px;                     /* giãn chữ nhẹ */
+    transition: all 0.45s ease;              /* chuyển mượt */
+  }
+  .view-glass p { opacity: 0.85; }           /* mô tả hơi mờ cho dịu */
+  .view-glass a.info {
+    transform: translateX(140px);            /* nút đứng ngoài phải */
+    transition: transform 0.45s ease;        /* trượt vào mượt */
+  }
+
+  /* Hover cho hiệu ứng custom */
+  .view-glass:hover img {
+    filter: blur(0px);                       /* ảnh rõ nét lại */
+    transform: scale(1.06);                  /* zoom nhẹ */
+  }
+  .view-glass:hover .mask {
+    transform: translateY(0);                /* trượt lên che nền */
+    opacity: 1;                              /* hiện mask */
+  }
+  .view-glass:hover h2 { letter-spacing: 4px; } /* giãn chữ mạnh hơn khi hover */
+  .view-glass:hover a.info { transform: translateX(0); } /* nút trượt vào chỗ */
+</style>
+</head>
+<body>
+
+<h2 style="margin:8px 0">a) Ví dụ 1 </h2>
+<div class="container">
+  <!-- Ví dụ 1: chỉnh theo yêu cầu -->
+  <div class="view view-first"> <!-- khung tiêu chuẩn -->
+    <img src="https://picsum.photos/id/1015/600/400" alt="sample"> <!-- ảnh minh họa -->
+    <div class="mask"> <!-- lớp phủ hiệu ứng -->
+      <h2>Hover Style #1</h2> <!-- tiêu đề overlay -->
+      <p>màu nền xanh nhạt </p> <!-- mô tả overlay -->
+      <a href="#" class="info">Read More</a> <!-- nút overlay -->
+    </div>
+  </div>
+</div>
+
+<h2 style="margin:16px 0 8px">b) Ví dụ 7 </h2>
+<div class="container">
+  <!-- Ví dụ 7: chỉnh theo yêu cầu -->
+  <div class="view view-seventh"> <!-- khung tiêu chuẩn -->
+    <img src="https://picsum.photos/id/1011/600/400" alt="model"> <!-- giả lập ảnh người mẫu -->
+    <div class="mask"> <!-- lớp phủ hiệu ứng -->
+      <h2>Hover Style #1</h2> <!-- dùng cùng nhãn để thể hiện yêu cầu ii -->
+      <p>Ảnh là người mẫu </p> <!-- mô tả -->
+      <a href="#" class="info">Read More</a> <!-- nút -->
+    </div>
+  </div>
+</div>
+
+<h2 style="margin:16px 0 8px">c) Hiệu ứng tự thiết kế </h2>
+<div class="container">
+  <!-- Custom: Glassmorphism + blur + slide -->
+  <div class="view view-glass"> <!-- khung tiêu chuẩn + class custom -->
+    <img src="https://picsum.photos/id/1003/600/400" alt="landscape"> <!-- ảnh nền -->
+    <div class="mask"> <!-- kính mờ trượt lên -->
+      <h2>Glass Reveal</h2> <!-- tiêu đề -->
+      <p>Ảnh mờ</p> <!-- mô tả -->
+      <a href="#" class="info">Read more</a> <!-- nút -->
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
