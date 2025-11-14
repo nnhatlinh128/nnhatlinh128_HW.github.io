@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Cá Nhân</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="./img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+    <link rel="manifest" href="./img/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Font Awesome 5 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .profile-header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #667eea;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-image .placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 80px;
+        }
+
+        .profile-name {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .profile-title {
+            font-size: 1.3em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .profile-description {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links .fa-facebook { background: #3b5998; }
+        .social-links .fa-github { background: #333; }
+        .social-links .fa-linkedin { background: #0077b5; }
+        .social-links .fa-twitter { background: #1da1f2; }
+        .social-links .fa-instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+        .social-links .fa-youtube { background: #ff0000; }
+        .social-links .fa-envelope { background: #dd4b39; }
+
+        /* Exercises Section */
+        .exercises-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #667eea;
+        }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .exercise-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .exercise-card:hover .exercise-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: white;
+        }
+
+        .exercise-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            color: #667eea;
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: block;
+        }
+
+        .exercise-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .exercise-description {
+            font-size: 0.95em;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #e9ecef;
+        }
+
+        .contact-item i {
+            font-size: 1.5em;
+            color: #667eea;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-item span {
+            color: #333;
+            font-size: 1.05em;
+        }
+
+        .contact-item a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-image">
+                <!-- Thay đổi src để sử dụng hình ảnh của bạn -->
+                <!-- <img src="your-photo.jpg" alt="Ảnh đại diện"> -->
+                <div class="placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+            <h1 class="profile-name">Nguyễn Nhật Linh</h1>
+            <p class="profile-title"><i class="fas fa-graduation-cap"></i> Sinh viên Khoa CNTTKD - UEH</p>
+            <p class="profile-description">
+                Chào mừng bạn đến với trang cá nhân của tôi! Đây là nơi tổng hợp các bài tập 
+                và dự án mà tôi đã hoàn thành trong quá trình học tập. 
+            </p>
+            
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://github.com" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com" target="_blank" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="mailto:your.email@example.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Exercises Section -->
+        <div class="exercises-section">
+            <h2 class="section-title">
+                <i class="fas fa-folder-open"></i>
+                Danh Sách Bài Tập
+            </h2>
+            <div class="exercises-grid">
+                <a href="BaiTap1.html" class="exercise-card">
+                    <i class="fas fa-file-alt exercise-icon"></i>
+                    <div class="exercise-title">Bài tập 1</div>
+                    <div class="exercise-description">Bài tập 1</div>
+                </a>
+
+                <a href="flappybird/index.html" class="exercise-card">
+                    <i class="fas fa-list exercise-icon"></i>
+                    <div class="exercise-title">Bài tập 2</div>
+                    <div class="exercise-description">Bài tập 2</div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <h3><i class="fas fa-address-card"></i> Thông Tin Liên Hệ</h3>
+            <div class="contact-item">
+                <i class="fas fa-user"></i>
+                <span><strong>Họ tên:</strong> Nguyễn Nhật Linh</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span><strong>Lớp:</strong> EEP002</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span><strong>Email:</strong> <a href="mailto:your.email@example.com">linhnguyen.31231025252@st.ueh.edu.vn</a></span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span><strong>Điện thoại:</strong> <a href="tel:+84123456789">+84 913 364 079</a></span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span><strong>Địa chỉ:</strong> Đại học Kinh tế TP. Hồ Chí Minh</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
